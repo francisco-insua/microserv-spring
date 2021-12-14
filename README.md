@@ -1,2 +1,2 @@
 # microserv-spring
-Microservice using Spring Cloud
+Microservice using Spring Boot
