@@ -22,6 +22,9 @@ public class UserJPAResource {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PostRepository postRepository;
+
 
 
     @GetMapping("/jpa/users")
@@ -93,15 +96,12 @@ public class UserJPAResource {
         }
 
         User user = userOptional.get();
-
         post.setUser(user);
-
-        //postRepository.save(post);
+        postRepository.save(post);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(post.getId())
                 .toUri();
 
         return ResponseEntity.created(location).build();
-
     }
 }
